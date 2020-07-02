@@ -1,0 +1,189 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <meta name="description" content="Research and compare average salaries. Free March 2020 salary information matched to your exact job profile. Find out what you are worth.">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="images/x-icon" href="./images/favicon-32x32.png" />
+</head>
+<body>
+    <div class="cont1 container-fluid">
+        <nav class="cont1-1 navbar navbar-expand-md navbar-dark">
+                                  <!----------------------- logo ---------------------->
+            <a class="navbar-brand" href="#"><img class="logo" src="./images/Akramix.png"></a>
+                                   <!----------------- Navbar links ------------------->
+            <div class="link collapse navbar-collapse" id="collapsibleNavbar">
+              <ul class="navbar-nav">
+                <li class="nav-item l1">
+                  <a class="nav-link" href="reservations.html">Reservations</a>
+                </li>
+                <li class="nav-item l1">
+                    <button class="btn1"><a class="nav-link " href="index.html"> Home </a> </button>
+                   </a>
+                </li>
+                
+              </ul>
+            </div>
+          </nav>
+          <div class="row cont2">
+            <div class="col-md-12">
+                <h1 style="font-family:cursive"><span> LISTE DES RESERVATIONS</span></h1>
+            </div>
+        </div>  
+        </div>      
+            </div>
+          </div>
+          <div class="container cont8">
+          <div class="table-responsive">
+
+            <form>
+            <div class="form-inline" id="login2">
+              <input type="text" name="name" placeholder="Name" id="name" class="form-control">
+              <input type="text" name="id" placeholder="CIN" id="cin" class="form-control">
+              <select name="sex" class="form-control" id="sex">
+                  <option value="Male">male</option>
+                  <option value="Female">Female</option>
+                </select>
+                <input type="text" name="tel" placeholder="number of rooms" id="tele" class="form-control">
+                <input type="text" name="address" placeholder="Address" class="form-control" id="adress">
+                <button type="button" class="btn btn-info" id="btn-add">Add New</button>
+                <button type="submit" class="btn btn-success" id="btn-update" onclick="apse()">Update</button>
+            </div> 
+          </form>
+        <hr>
+            <table id="table_data" class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>CIN</th>
+                  <th>Sex</th>
+                  <th>number of rooms</th>
+                  <th>Address</th>
+                </tr>
+              </thead>
+              <tbody id="table_data">
+              </tbody>
+            </table>
+            <script src="tables.js"></script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+ </script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+ </script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+ </script>
+ 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+<script>
+
+           /****************************** start update ***********************/
+$(function(){
+  $("#btn-add").click(function(){
+    var _id = $('input[name="id"]').val();
+    var _name = $('input[name="name"]').val();
+    var _sex = $('select[name="sex"]').val();
+    var _tel = $('input[name="tel"]').val();
+    var _address = $('input[name="address"]').val();
+
+    var _tr ='<tr style="color:white;"><td>'+ _name +'</td>  <td>'+ _id +'</td>  <td>'+ _sex +'</td>  <td>'+ _tel +'</td>  <td>'+ _address +'</td>  <td><button type="button" class="btn btn-success btn-edit">Edite</button> | <button type="button" class="btn btn-danger btn-delete">Delete</button></td></tr>'
+      $('tbody').append(_tr);
+ 
+  });
+            /****************************** end update ***********************/
+            /****************************** start found ***********************/
+  var _trEdit = null;
+  $(document).on('click','.btn-edit', function(){
+    _trEdit = $(this).closest('tr');
+    var _id = $(_trEdit).find('td:eq(0)').text();
+    var _name = $(_trEdit).find('td:eq(1)').text();
+    var _sex = $(_trEdit).find('td:eq(2)').text();
+    var _tel = $(_trEdit).find('td:eq(3)').text();
+    var _address = $(_trEdit).find('td:eq(4)').text();
+
+    $('input[name="id"]').val(_id);
+    $('input[name="name"]').val(_name);
+    $('input[name="sex"]').val(_sex);
+    $('input[name="tel"]').val(_tel);
+    $('input[name="address"]').val(_address);
+                 });
+                      /****************************** end found ***********************/
+                      /****************************** startt edite ***********************/
+  $('#btn-update').click(function(){
+    if(_trEdit){
+      var _id = $('input[name="id"]').val();
+    var _name = $('input[name="name"]').val();
+    var _sex = $('input[name="sex"]').val();
+    var _tel = $('input[name="tel"]').val();
+    var _address = $('input[name="address"]').val();
+
+     $(_trEdit).find('td:eq(0)').text(_id);
+     $(_trEdit).find('td:eq(1)').text(_name);
+    $(_trEdit).find('td:eq(2)').text(_sex);
+     $(_trEdit).find('td:eq(3)').text(_tel);
+    $(_trEdit).find('td:eq(4)').text(_address);
+                }
+                            });
+                            /****************************** end edite ***********************/
+                            /****************************** start delete ***********************/
+  $(document).on('click','.btn-delete',function(){
+    if(confirm("are you sure to dlete this reservation ?")){
+    $(this).closest('tr').remove();
+              }
+              });
+               });
+                            /****************************** end delete ***********************/
+
+  function apse() {
+  var txt;
+  if (confirm("Your Information Is Update !!")) {
+    txt = "You pressed OK!";
+  } else {
+    txt = "You pressed Cancel!";
+  }
+  }
+
+
+
+ 
+
+
+
+                $(document).ready(function(){
+                  $.getJSON('../table',function(data,err){
+                          console.log(data);
+                    var table_data = '';
+                    $.each(data,function(key,value){
+                        var _id = $('input[name="id"]').val();
+                        var _name = $('input[name="name"]').val();
+                        var _sex = $('select[name="sex"]').val();
+                        var _tel = $('input[name="tel"]').val();
+                        var _address = $('input[name="address"]').val()
+                      table_data += '<tr style="color:white">';
+                      table_data += '<td>'+value.name+'</td>';
+                      table_data += '<td>'+value.cin+'</td>';
+                      table_data += '<td>'+value.sex+'</td>';
+                      table_data += '<td>'+value.tele+'</td>';
+                      table_data += '<td>'+value.adress+'</td>';
+                      table_data += '</tr>';
+                      table_data ='<tr style="color:white;"><td>'+value.name+'</td><td>'+value.cin+'</td>  <td>'+value.sex+'</td>  <td>'+value.tele+'</td>  <td>'+value.adress+'</td>  <td><button type="button" class="btn btn-success btn-edit">Edite</button> | <button type="button" class="btn btn-danger btn-delete">Delete</button></td></tr>';   
+                      });
+                    $('#table_data').append(table_data);
+                      });
+                    });
+                  
+
+                
+
+
+</script>
+   </body>
+</html>
