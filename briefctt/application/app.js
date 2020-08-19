@@ -29,7 +29,12 @@ app.use(routeajoutelogdata);
 
 
 
-
+                                      app.post('/signin', (req, res) => {
+                                            
+                                            if (res){
+                                            res.redirect('/index.html');
+                                            };
+                                            });
 
                                      app.get('/',function(req,res){
                                        res.sendFile(__dirname + '/public/index.html');
